@@ -1,0 +1,35 @@
+{
+    "http-request": {
+        "path": "/api/insights",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTc4MzAwMzUxOSwiZXhwIjoxNzgzMDg5OTE5fQ.5k7Tqdbtg4eGMPP6V2gj1TAMU2Qk0ws98KXPQMPZYY4"
+        },
+        "description": "This is an example of a bad request for POST /api/insights endpoint"
+    },
+    "http-response": {
+        "status": 400,
+        "body": {
+            "error": "Gone",
+            "details": [
+                {
+                    "field": "Community-Services",
+                    "message": "et"
+                },
+                {
+                    "field": "Construction",
+                    "message": "aspernatur"
+                }
+            ]
+        },
+        "status-text": "Bad Request",
+        "headers": {
+            "X-Powered-By": "ratione",
+            "Connection": "rem",
+            "Keep-Alive": "accusamus",
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response for a bad request sent to POST /api/insights endpoint"
+    }
+}

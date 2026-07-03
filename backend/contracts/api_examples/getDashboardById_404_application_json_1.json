@@ -1,0 +1,18 @@
+{
+    "http-request": {
+        "path": "/api/dashboards/168",
+        "method": "GET",
+        "description": "This is an example of a request to retrieve a specific entity at the /api/dashboards/168 endpoint"
+    },
+    "http-response": {
+        "status": 404,
+        "body": {
+            "error": "Session Interval Too Small"
+        },
+        "status-text": "Not Found",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response "
+    }
+}

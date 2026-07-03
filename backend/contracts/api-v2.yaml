@@ -1,0 +1,221 @@
+openapi: 3.0.1
+
+info:
+  title: Dena Analytics API
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /api/auth/login:
+    post:
+
+      summary: Login User
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              type: object
+
+              required:
+                - username
+                - password
+
+              properties:
+                username:
+                  type: string
+
+                password:
+                  type: string
+            examples:
+               validLogin:
+                 value:
+                    username: admin
+                    password: admin123
+      responses:
+           "200":
+             description: Login successful
+             content:
+               application/json:
+                 schema:
+                   type: object
+                   properties:
+                     message:
+                       type: string
+         
+                     token:
+                       type: string
+         
+                     user:
+                       type: object
+                       properties:
+                         id:
+                           type: integer
+         
+                         username:
+                           type: string
+         
+                 examples:
+                   validLogin:
+                     value:
+                       message: Login successful
+                       token: sample-token
+                       user:
+                         id: 1
+                         username: admin
+           "401":
+             description: Invalid username or password
+             content:
+               application/json:
+                 schema:
+                   type: object
+                   properties:
+                     error:
+                       type: string
+  /api/dashboards:
+    get:
+
+      summary: Get Dashboards
+
+      responses:
+        "200":
+          description: Dashboard List
+
+          content:
+            application/json:
+              schema:
+                type: array
+
+                items:
+                  type: object
+
+                  properties:
+                      id:
+                        type: integer
+                    
+                      dashboardname:
+                        type: string
+                    
+                      category:
+                        type: string
+                    
+                      powerBiUrl:
+                        type: string
+                    
+                      lastUpdated:
+                        type: string
+  /api/dashboards/{id}:
+   get:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          example: 1
+
+    responses:
+      "200":
+        description: Dashboard
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                category:
+                  type: string
+                powerBiUrl:
+                  type: string
+                lastUpdated:
+                  type: string
+
+            examples:
+              dashboard1:
+                value:
+                  id: 1
+                  name: Census & Population Demographics
+                  category: census
+                  powerBiUrl: https://example.com
+                  lastUpdated: "2026-06-08T10:00:00Z"
+
+      "404":
+        description: Dashboard not found 
+  /api/analytics/{category}:
+    get:
+
+      parameters:
+        - name: category
+          in: path
+          required: true
+
+          schema:
+            type: string
+            enum:
+              - census
+              - tourism
+              - health
+              - education
+              - finance
+              - ev
+
+      responses:
+          "200":
+             description: Analytics data
+             content:
+               application/json:
+                 schema:
+                   type: array
+                   items:
+                     type: object
+                     properties:
+                       id:
+                         type: integer
+           
+                       category:
+                         type: string
+           
+                       metricName:
+                         type: string
+           
+                       metricValue:
+                         type: number
+        
+          "400":
+            description: Validation Error
+  /api/insights:
+   post:
+    security:
+      - bearerAuth: []
+
+    requestBody:
+      required: true
+
+      content:
+        application/json:
+          schema:
+            type: object
+
+            properties:
+              category:
+                type: string
+
+    responses:
+      "200":
+        description: Insight Generated
+
+      "401":
+        description: Unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT        

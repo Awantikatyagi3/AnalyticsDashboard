@@ -1,0 +1,25 @@
+{
+    "http-request": {
+        "path": "/api/auth/login",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "username": "raina.ferry",
+            "password": "football"
+        },
+        "description": "This is an example of a request to create a new entity at the /api/auth/login endpoint "
+    },
+    "http-response": {
+        "status": 401,
+        "body": {
+            "error": "Gone"
+        },
+        "status-text": "Unauthorized",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /api/auth/login endpoint "
+    }
+}

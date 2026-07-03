@@ -1,0 +1,36 @@
+{
+    "http-request": {
+        "path": "/api/insights",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTc4MzA4Mjc1MiwiZXhwIjoxNzgzMTY5MTUyfQ.VSrRjeID9lysHG9OE3OBMMnB3prXiQW7QhHV_R_5Ym4"
+        },
+        "body": {
+            "category": "census"
+        },
+        "description": "This is an example of a request to create a new entity at the /api/insights endpoint "
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "category": "Aviation / Flight",
+            "summary": "quae",
+            "keyTakeaways": [
+                "quaerat",
+                "illum"
+            ],
+            "recommendations": [
+                "neque",
+                "tenetur"
+            ],
+            "analyzedBy": "sed",
+            "timestamp": "2026-06-19T08:30:31Z"
+        },
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /api/insights endpoint "
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "http-request": {
+        "path": "/api/auth/login",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "username": "admin",
+            "password": "admin123"
+        },
+        "description": "This is an example of a request to create a new entity at the /api/auth/login endpoint "
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "message": "optio",
+            "token": "qui",
+            "user": {
+                "id": 143,
+                "username": "tiara.satterfield"
+            }
+        },
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /api/auth/login endpoint "
+    }
+}

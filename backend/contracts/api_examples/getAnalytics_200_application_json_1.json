@@ -1,0 +1,29 @@
+{
+    "http-request": {
+        "path": "/api/analytics/census",
+        "method": "GET",
+        "description": "This is an example of a request to retrieve a specific entity at the /api/analytics/Math endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": [
+            {
+                "id": 585,
+                "category": "Transportation",
+                "metricName": "centimeter",
+                "metricValue": 272.0
+            },
+            {
+                "id": 168,
+                "category": "Environmental",
+                "metricName": "centimeter",
+                "metricValue": 578.0
+            }
+        ],
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response "
+    }
+}

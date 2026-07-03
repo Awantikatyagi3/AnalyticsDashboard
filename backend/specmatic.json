@@ -1,0 +1,10 @@
+{
+  "sources": [
+    {
+      "provider": "filesystem",
+      "provides": [
+        "contracts/api.yaml"
+      ]
+    }
+  ]
+}

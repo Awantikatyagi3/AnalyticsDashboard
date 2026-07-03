@@ -1,0 +1,93 @@
+arazzo: "1.0.0"
+info:
+  title: "Arazzo Workflow"
+  version: "1.0.0"
+sourceDescriptions:
+- name: "ApiApi"
+  url: "./contracts/api.yaml"
+  type: "openapi"
+workflows:
+- workflowId: "DenaAnalyticsJourney"
+  inputs:
+    required:
+    - "generateInsights"
+    - "loginUser"
+    type: "object"
+    properties:
+      generateInsights:
+        required:
+        - "Authorization"
+        type: "object"
+        properties:
+          Authorization:
+            pattern: "^Bearer [A-Za-z0-9\\-._~+/]+=*$"
+            type: "string"
+      loginUser:
+        required:
+        - "password"
+        - "username"
+        type: "object"
+        properties:
+          username:
+            type: "string"
+          password:
+            type: "string"
+  steps:
+  - stepId: "loginUser"
+    operationId: "$sourceDescriptions.ApiApi.loginUser"
+    requestBody:
+      contentType: "application/json"
+      payload:
+        username: "$inputs.loginUser.username"
+        password: "$inputs.loginUser.password"
+    successCriteria:
+    - condition: "$statusCode == 200"
+  - stepId: "getDashboards"
+    operationId: "$sourceDescriptions.ApiApi.getDashboards"
+    successCriteria:
+    - condition: "$statusCode == 200"
+    onSuccess:
+    - name: "HasDashboards"
+      type: "end"
+      criteria:
+      - condition: "$response.body#/0 == null"
+    outputs:
+      id: "$response.body#/0/id"
+  - stepId: "getDashboardById"
+    operationId: "$sourceDescriptions.ApiApi.getDashboardById"
+    parameters:
+    - name: "id"
+      in: "path"
+      value: "$steps.getDashboards.outputs.id"
+    successCriteria:
+    - condition: "$statusCode == 200"
+    outputs:
+      category: "$response.body#/category"
+  - stepId: "getAnalytics"
+    operationId: "$sourceDescriptions.ApiApi.getAnalytics"
+    parameters:
+    - name: "category"
+      in: "path"
+      value: "$steps.getDashboardById.outputs.category"
+    successCriteria:
+    - condition: "$statusCode == 200"
+    onSuccess:
+    - name: "HasDashboards"
+      type: "end"
+      criteria:
+      - condition: "$response.body#/0 == null"
+    outputs:
+      category: "$response.body#/0/category"
+  - stepId: "generateInsights"
+    operationId: "$sourceDescriptions.ApiApi.generateInsights"
+    parameters:
+    - name: "Authorization"
+      in: "header"
+      value: "$inputs.generateInsights.Authorization"
+    requestBody:
+      contentType: "application/json"
+      payload:
+        category: "$steps.getAnalytics.outputs.category"
+    successCriteria:
+    - condition: "$statusCode == 200"
+components: {}

@@ -1,0 +1,34 @@
+{
+    "http-request": {
+        "path": "/api/auth/login",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a bad request for POST /api/auth/login endpoint"
+    },
+    "http-response": {
+        "status": 400,
+        "body": {
+            "error": "Conflict",
+            "details": [
+                {
+                    "field": "Consulting",
+                    "message": "quas"
+                },
+                {
+                    "field": "Advertising",
+                    "message": "veritatis"
+                }
+            ]
+        },
+        "status-text": "Bad Request",
+        "headers": {
+            "X-Powered-By": "deleniti",
+            "Connection": "reprehenderit",
+            "Keep-Alive": "accusamus",
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response for a bad request sent to POST /api/auth/login endpoint"
+    }
+}

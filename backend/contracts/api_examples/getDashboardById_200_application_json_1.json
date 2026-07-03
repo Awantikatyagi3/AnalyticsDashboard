@@ -1,0 +1,22 @@
+{
+    "http-request": {
+        "path": "/api/dashboards/1",
+        "method": "GET",
+        "description": "This is an example of a request to retrieve a specific entity at the /api/dashboards/139 endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "id": 1,
+            "name": "Loris nasicus",
+            "category": "Modern Warfare",
+            "powerBiUrl": "17W",
+            "lastUpdated": "2026-06-19T08:30:08Z"
+        },
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response "
+    }
+}

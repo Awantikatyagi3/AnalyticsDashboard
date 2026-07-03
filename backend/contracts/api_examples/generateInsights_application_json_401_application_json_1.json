@@ -1,0 +1,28 @@
+{
+    "http-request": {
+        "path": "/api/insights",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer libero"
+        },
+        "body": {
+            "category": "politics"
+        },
+        "description": "This is an example of a request to create a new entity at the /api/insights endpoint "
+    },
+    "http-response": {
+        "status": 401,
+        "body": {
+            "error": "Not Acceptable Here"
+        },
+        "status-text": "Unauthorized",
+        "headers": {
+            "X-Powered-By": "atque",
+            "Connection": "sit",
+            "Keep-Alive": "eveniet",
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /api/insights endpoint "
+    }
+}

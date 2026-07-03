@@ -1,0 +1,31 @@
+{
+    "http-request": {
+        "path": "/api/dashboards",
+        "method": "GET",
+        "description": "This is an example of a request to retrieve a specific entity at the /api/dashboards endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": [
+            {
+                "id": 187,
+                "name": "Hylobates berengei",
+                "category": "Civilization",
+                "powerBiUrl": "85W",
+                "lastUpdated": "2026-06-19T08:30:05Z"
+            },
+            {
+                "id": 942,
+                "name": "Aonyx breviceps",
+                "category": "Horror",
+                "powerBiUrl": "94W",
+                "lastUpdated": "2026-06-19T08:30:05Z"
+            }
+        ],
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response "
+    }
+}

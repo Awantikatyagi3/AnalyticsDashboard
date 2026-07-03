@@ -1,0 +1,35 @@
+{
+    "http-request": {
+        "path": "/api/dashboards/false",
+        "method": "GET",
+        "description": "This is an example of a bad request for GET /api/dashboards/false endpoint"
+    },
+    "http-response": {
+        "status": 400,
+        "body": {
+            "error": "Request Terminated",
+            "details": [
+                {
+                    "field": "Advertising",
+                    "message": "quam"
+                },
+                {
+                    "field": "Accounting",
+                    "message": "quasi"
+                },
+                {
+                    "field": "Manufacturing",
+                    "message": "tempore"
+                }
+            ]
+        },
+        "status-text": "Bad Request",
+        "headers": {
+            "X-Powered-By": "quibusdam",
+            "Connection": "voluptatem",
+            "Keep-Alive": "similique",
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response for a bad request sent to GET /api/dashboards/false endpoint"
+    }
+}

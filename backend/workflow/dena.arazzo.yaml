@@ -1,0 +1,30 @@
+arazzo: 1.0.1
+
+info:
+  title: Dena Analytics Workflow
+  version: 1.0.0
+
+sourceDescriptions:
+  - name: DenaAPI
+    type: openapi
+    url: ../contracts/api.yaml
+
+workflows:
+  - workflowId: denaAnalyticsJourney
+    summary: Complete Dena Analytics user journey
+
+    steps:
+      - stepId: login
+        operationId: loginUser
+
+      - stepId: getDashboards
+        operationId: getDashboards
+
+      - stepId: getDashboardById
+        operationId: getDashboardById
+
+      - stepId: getAnalytics
+        operationId: getAnalytics
+
+      - stepId: generateInsights
+        operationId: generateInsights
