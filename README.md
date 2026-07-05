@@ -1,6 +1,6 @@
-# DENA Analytics Dashboard - Policy Data Platform
+# Analytics Dashboard - Policy Data Platform
 
-A full-stack analytics platform for India's policy data, organized as a clean **npm monorepo workspace**. The application visualizes demographic, census, tourism, health, education, and finance metrics using modern dashboards and automated insights.
+A full-stack analytics platform for India's policy data. The application visualizes demographic, census, tourism, health, education, and finance metrics using modern dashboards and automated insights.
 
 ---
 
@@ -104,7 +104,7 @@ IIT/                                  ← monorepo workspace root
     │   ├── api_dictionary.json       # Specmatic data dictionary for test generation
     │   └── api_examples/             # External Specmatic example files (12 scenarios)
     ├── workflow/                     # Arazzo workflow test definitions (for Enterprise)
-    ├── specmatic.yaml                # Specmatic Config V3 (replaces specmatic.json)
+    ├── specmatic.yaml                # Specmatic Config V3 
     ├── jest.config.js                # Jest configuration for contract tests
     ├── docker-compose.yml            # Docker Compose: backend + specmatic-test services
     ├── package.json                  # Backend configuration (includes specmatic, jest)
