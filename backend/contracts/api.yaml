@@ -329,6 +329,17 @@ paths:
                   timestamp:
                     type: string
                     format: date-time
+              examples:
+                validInsight:
+                  value:
+                    category: census
+                    summary: "The demographics insight shows a stabilizing growth pattern."
+                    keyTakeaways:
+                      - "Population growth is moderating."
+                    recommendations:
+                      - "Develop smart city infrastructure."
+                    analyzedBy: "DENA AI Analytics Engine v1.0"
+                    timestamp: "2026-07-05T07:42:09.381Z"
         '401':
           description: Unauthorized
           headers:

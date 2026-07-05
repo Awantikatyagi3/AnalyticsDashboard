@@ -3,3 +3,20 @@ services:
     build: .
     ports:
       - "3000:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/', (r) => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  specmatic-test:
+    image: specmatic/specmatic:latest
+    volumes:
+      - ./:/usr/src/app
+    working_dir: /usr/src/app
+    # Run Specmatic OpenAPI contract tests against the backend service
+    command: test --host=dena-backend --port=3000
+    depends_on:
+      dena-backend:
+        condition: service_healthy
