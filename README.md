@@ -1,6 +1,6 @@
-# DENA Analytics Dashboard - Policy Data Platform
+# Analytics Dashboard - Policy Data Platform
 
-A full-stack analytics platform for India's policy data, organized as a clean **npm monorepo workspace**. The application visualizes demographic, census, tourism, health, education, and finance metrics using modern dashboards and automated insights.
+A full-stack analytics platform for India's policy data. The application visualizes demographic, census, tourism, health, education, and finance metrics using modern dashboards and automated insights.
 
 ---
 
