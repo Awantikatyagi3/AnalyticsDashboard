@@ -1,9 +1,6 @@
 {
     "DenaAnalyticsJourney": {
         "DEFAULT": {
-            "generateInsights": {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTc4MzA4Mjc1MiwiZXhwIjoxNzgzMTY5MTUyfQ.VSrRjeID9lysHG9OE3OBMMnB3prXiQW7QhHV_R_5Ym4"
-            },
             "loginUser": {
                 "username": "admin",
                 "password": "admin123"

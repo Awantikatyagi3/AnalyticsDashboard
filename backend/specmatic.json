@@ -3,7 +3,8 @@
     {
       "provider": "filesystem",
       "provides": [
-        "contracts/api.yaml"
+        "contracts/api.yaml",
+        "workflow/DenaAnalyticsJourney.arazzo.yaml"
       ]
     }
   ]

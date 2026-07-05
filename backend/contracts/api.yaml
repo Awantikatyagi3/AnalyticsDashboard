@@ -41,11 +41,14 @@ paths:
             application/json:
               schema:
                 type: object
+                required:
+                - token
                 properties:
                   message:
                     type: string
                   token:
                     type: string
+                    pattern: "^[A-Za-z0-9\\-._~+/]+=*$"
                   user:
                     type: object
                     properties:
@@ -367,9 +370,9 @@ paths:
 components:
   securitySchemes:
     bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+      type: apiKey
+      name: Authorization
+      in: header
   examples:
     loginUser_application_json_200_application_json_1_request:
       value:

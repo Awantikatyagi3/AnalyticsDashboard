@@ -4,7 +4,7 @@
         "method": "POST",
         "headers": {
             "Content-Type": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTc4MzAwMzUxOSwiZXhwIjoxNzgzMDg5OTE5fQ.5k7Tqdbtg4eGMPP6V2gj1TAMU2Qk0ws98KXPQMPZYY4"
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTc4MzE5MDQzNCwiZXhwIjoxNzgzMjc2ODM0fQ.ffS9xCdh8Woaj5Kp8buZ_Kw9kS7JXx1nm6Ariqxf2p8"
         },
         "description": "This is an example of a bad request for POST /api/insights endpoint"
     },
