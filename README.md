@@ -13,6 +13,71 @@ A full-stack analytics platform for India's policy data, organized as a clean **
 
 ---
 
+## 🏗️ System Architecture
+
+The platform follows a decoupled, three-tier architecture structured inside a monorepo:
+
+1. **Presentation Layer (Frontend):** A React Single-Page Application (SPA) that acts as the user interface, rendering interactive dashboards and handling document exports.
+2. **Application Layer (Backend):** A TypeScript Node.js Express server that orchestrates business logic, JWT authentication, Zod input validation, and endpoints for data queries and AI-style insights.
+3. **Data Layer (Database):** A self-contained SQLite file-based database containing demographic and analytics policy tables.
+
+The communication is verified using **Contract-First development**, where the [api.yaml](file:///c:/Users/awant/OneDrive/Desktop/dena/dena/IIT/backend/contracts/api.yaml) contract validates both the backend code and mock interfaces.
+
+```mermaid
+graph TD
+    subgraph Client Layer
+        A[React SPA / Vite]
+    end
+    subgraph API Layer
+        B[Express.js / TypeScript]
+        C[JWT Authentication]
+        D[Zod Schema Validation]
+    end
+    subgraph Data Layer
+        E[(SQLite Database)]
+    end
+    subgraph Contract & Verification
+        F[Specmatic CLI & Jest]
+        G[OpenAPI Contract / api.yaml]
+    end
+
+    A -->|HTTPS Requests| B
+    B -->|Query / Persist| E
+    B -->|Middleware Checks| C
+    B -->|Request Validation| D
+    F -->|Validate Contract Compliance| B
+    G -->|Defines Contract| F
+    G -->|API Definition| A
+    G -->|API Definition| B
+```
+
+---
+
+## 💻 Tech Stack
+
+### Frontend
+- **Framework:** React 19 (JavaScript)
+- **Routing:** React Router 7 (`react-router-dom`)
+- **Build System:** Vite 7
+- **Document Export:** `docx` (for generating Word reports)
+- **Styling:** Vanilla CSS
+
+### Backend
+- **Language:** TypeScript 5
+- **Runtime:** Node.js 20
+- **Framework:** Express 4
+- **Database:** SQLite 3 (handled via `sqlite` & `sqlite3`)
+- **Validation:** Zod
+- **Authentication:** JWT (`jsonwebtoken`) & `bcryptjs`
+- **Documentation:** Swagger (Swagger UI Express + swagger-jsdoc)
+
+### Contract Testing & Quality Assurance
+- **Contract Driver:** Specmatic (v2.49.1) via [specmatic.yaml](file:///c:/Users/awant/OneDrive/Desktop/dena/dena/IIT/backend/specmatic.yaml)
+- **Test Runner:** Jest (with `ts-jest` and `axios`)
+- **CI/CD:** GitHub Actions
+
+---
+
 ## 📁 Repository Structure
 
 ```
