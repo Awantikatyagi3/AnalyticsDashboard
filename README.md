@@ -248,7 +248,6 @@ With a Specmatic Enterprise license, Studio provides a visual, browser-based int
 
 4. In the Studio **Test** tab:
    - Select **`workflow/DenaAnalyticsJourney.arazzo.yaml`** as the spec.
-   - Set the **Target URL** to `http://localhost:3000`.
    - Click **▶ Run** to execute the full workflow sequence.
 
 ---
