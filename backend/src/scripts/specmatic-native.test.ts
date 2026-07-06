@@ -40,7 +40,7 @@ describe('DENA Analytics Contract & Workflow Tests', () => {
     
     // We expect the contract tests to pass.
     expect(result).toBeDefined();
-  }, 60000); // 60 seconds timeout since Specmatic running in the JVM can take some time to boot
+  }, 120000); // 120 seconds timeout since Specmatic running in the JVM can take some time to boot
 
   it('runs the sequential CREATE/VIEW/CREATE workflow (User Journey)', async () => {
     // Step 1: Login User (CREATE session/token)

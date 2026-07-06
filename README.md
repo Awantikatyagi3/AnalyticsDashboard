@@ -211,28 +211,73 @@ This will:
 
 ## 🔄 Arazzo Workflow Testing
 
-The Arazzo workflow file (`workflow/DenaAnalyticsJourney.arazzo.yaml`) defines a multi-step user journey. Testing Arazzo workflows requires **Specmatic Enterprise**. With the backend running:
+The Arazzo workflow file ([`workflow/DenaAnalyticsJourney.arazzo.yaml`](./backend/workflow/DenaAnalyticsJourney.arazzo.yaml)) defines the multi-step user journey:
+
+> **Login → List Dashboards → Get Dashboard → Get Analytics → Generate Insights**
+
+Arazzo workflow testing requires **Specmatic Enterprise**. The Arazzo file is included in this project for forward-compatibility and documentation purposes.
+
+> [!IMPORTANT]
+> Both **Specmatic Studio** (visual runner) and the **CLI Arazzo runner** are Enterprise-only features and are **not available** in the open-source `specmatic` npm package (v2.49.1) used by this project.
+
+---
+
+### Option A — Specmatic Studio (Enterprise only)
+
+With a Specmatic Enterprise license, Studio provides a visual, browser-based interface to run and inspect Arazzo workflows step-by-step:
+
+1. **Start the backend server:**
+   ```bash
+   cd backend
+   npm run dev
+   ```
+
+2. **Start the Specmatic Enterprise Studio container:**
+   Ensure Docker is installed and running, then execute the following command from the `backend/` directory:
+   ```bash
+   docker run --rm -it `
+     -p 9000:9000 `
+     -v ${PWD}:/usr/src/app `
+     specmatic/enterprise:latest studio
+   ```
+
+3. **Open Specmatic Studio** in your browser:
+   ```
+   http://localhost:9000/_specmatic/studio
+   ```
+
+4. In the Studio **Test** tab:
+   - Select **`workflow/DenaAnalyticsJourney.arazzo.yaml`** as the spec.
+   - Set the **Target URL** to `http://localhost:3000`.
+   - Click **▶ Run** to execute the full workflow sequence.
+
+---
+
+### Option B — CLI (Specmatic Enterprise)
+
+If you have a Specmatic Enterprise license, run the workflow directly from the CLI:
 
 ```bash
 cd backend
-# Requires Specmatic Enterprise license
+# Start the backend server first, then run:
 npx specmatic test workflow/DenaAnalyticsJourney.arazzo.yaml --host=localhost --port=3000
 ```
 
 > [!NOTE]
-> This project uses Specmatic **Open Source** for all CI and automated tests. The Arazzo workflow file is included for forward-compatibility and documentation purposes.
+> This project uses Specmatic **Open Source** (v2.49.1) for all CI and automated tests. The Arazzo workflow file is included for forward-compatibility. Arazzo workflow tests require upgrading to Specmatic Enterprise.
 
 ---
 
 ## 📋 CI/CD — GitHub Actions
 
-Every `push` and `pull_request` to `main` automatically runs contract and workflow tests:
+Every `push` and `pull_request` to `main` automatically runs contract **and resiliency** tests:
 
 1. Installs Node.js 20 + Java 17 (required by Specmatic).
 2. Installs all dependencies and builds the TypeScript backend.
 3. Validates all Specmatic examples (`npx specmatic examples validate`).
-4. Runs the language-native **Jest contract & workflow tests** (`npm run test:contract`).
-5. Starts the backend server and runs full **CLI Specmatic contract tests**.
+4. Runs the language-native **Jest contract & workflow tests** with **generative (resiliency) tests enabled** via `SPECMATIC_GENERATIVE_TESTS=true`.
+5. Starts the backend server and runs full **CLI Specmatic contract tests** — including negative/boundary test generation via `SPECMATIC_GENERATIVE_TESTS=true` — against the live server.
 6. Uploads the Specmatic HTML test report as a build artifact.
 
 See [`.github/workflows/specmatic-tests.yml`](.github/workflows/specmatic-tests.yml) for the full pipeline definition.
+

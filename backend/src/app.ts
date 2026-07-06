@@ -59,6 +59,94 @@ app.get('/openapi.json', (req: Request, res: Response) => {
   res.send(swaggerSpec);
 });
 
+// Spring Boot Actuator-compatible endpoint mappings for Specmatic coverage report
+app.get('/actuator/mappings', (req: Request, res: Response) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.json({
+    contexts: {
+      application: {
+        mappings: {
+          dispatcherServlets: {
+            dispatcherServlet: [
+              {
+                handler: 'AuthController.loginUser',
+                predicate: '{POST [/api/auth/login]}',
+                details: {
+                  handlerMethod: {
+                    className: 'AuthController',
+                    name: 'loginUser'
+                  },
+                  requestMappingConditions: {
+                    methods: ['POST'],
+                    patterns: ['/api/auth/login']
+                  }
+                }
+              },
+              {
+                handler: 'DashboardController.getDashboards',
+                predicate: '{GET [/api/dashboards]}',
+                details: {
+                  handlerMethod: {
+                    className: 'DashboardController',
+                    name: 'getDashboards'
+                  },
+                  requestMappingConditions: {
+                    methods: ['GET'],
+                    patterns: ['/api/dashboards']
+                  }
+                }
+              },
+              {
+                handler: 'DashboardController.getDashboardById',
+                predicate: '{GET [/api/dashboards/{id}]}',
+                details: {
+                  handlerMethod: {
+                    className: 'DashboardController',
+                    name: 'getDashboardById'
+                  },
+                  requestMappingConditions: {
+                    methods: ['GET'],
+                    patterns: ['/api/dashboards/{id}']
+                  }
+                }
+              },
+              {
+                handler: 'AnalyticsController.getAnalytics',
+                predicate: '{GET [/api/analytics/{category}]}',
+                details: {
+                  handlerMethod: {
+                    className: 'AnalyticsController',
+                    name: 'getAnalytics'
+                  },
+                  requestMappingConditions: {
+                    methods: ['GET'],
+                    patterns: ['/api/analytics/{category}']
+                  }
+                }
+              },
+              {
+                handler: 'InsightController.generateInsights',
+                predicate: '{POST [/api/insights]}',
+                details: {
+                  handlerMethod: {
+                    className: 'InsightController',
+                    name: 'generateInsights'
+                  },
+                  requestMappingConditions: {
+                    methods: ['POST'],
+                    patterns: ['/api/insights']
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  });
+});
+
+
 // Root check
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({

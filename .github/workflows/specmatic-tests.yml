@@ -45,10 +45,13 @@ jobs:
 
       # ─── Step 7: Run language-native Jest contract & workflow tests ──────────
       #             This starts the backend server programmatically, runs
-      #             Specmatic contract tests and the sequential user journey.
-      - name: Run Jest contract & workflow tests
+      #             Specmatic contract tests, resiliency (generative) tests,
+      #             and the sequential user journey.
+      - name: Run Jest contract & workflow tests (incl. resiliency)
         working-directory: backend
         run: npm run test:contract
+        env:
+          SPECMATIC_GENERATIVE_TESTS: "true"
 
       # ─── Step 8: Start backend server and run CLI Specmatic contract tests ───
       - name: Start backend server
@@ -69,9 +72,11 @@ jobs:
             sleep 2
           done
 
-      - name: Run Specmatic CLI contract tests
+      - name: Run Specmatic CLI contract & resiliency tests
         working-directory: backend
         run: npx specmatic test --host=localhost --port=3000
+        env:
+          SPECMATIC_GENERATIVE_TESTS: "true"
 
       # ─── Step 9: Run Specmatic Arazzo workflow tests ─────────────────────────
       # Note: Arazzo workflow testing requires Specmatic Enterprise.
