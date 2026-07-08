@@ -10,3 +10,6 @@ systemUnderTest:
         specs:
         - "contracts/api.yaml"
         - "workflow/DenaAnalyticsJourney.arazzo.yaml"
+    runOptions:
+      openapi:
+        actuatorUrl: "http://localhost:{PORT:3000}/actuator/mappings"
