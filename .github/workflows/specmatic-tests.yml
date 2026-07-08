@@ -79,12 +79,9 @@ jobs:
           SPECMATIC_GENERATIVE_TESTS: "true"
 
       # ─── Step 9: Run Specmatic Arazzo workflow tests ─────────────────────────
-      # Note: Arazzo workflow testing requires Specmatic Enterprise.
-      # The workflow spec is included for documentation and forward-compatibility
-      # with the enterprise edition.
-      # - name: Run Arazzo workflow tests
-      #   working-directory: backend
-      #   run: npx specmatic test workflow/DenaAnalyticsJourney.arazzo.yaml --host=localhost --port=3000
+      - name: Run Arazzo workflow tests
+        working-directory: backend
+        run: docker run --rm --network host -v ${{ github.workspace }}/backend:/usr/src/app specmatic/enterprise:1.20.1 test workflow/DenaAnalyticsJourney.arazzo.yaml --host=localhost --port=3000
 
       # ─── Step 10: Upload test reports ────────────────────────────────────────
       - name: Upload Specmatic HTML test report
