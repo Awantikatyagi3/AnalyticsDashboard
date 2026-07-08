@@ -40,11 +40,7 @@ workflows:
     operationId: "$sourceDescriptions.ApiApi.getDashboards"
     successCriteria:
     - condition: "$statusCode == 200"
-    onSuccess:
-    - name: "HasDashboards"
-      type: "end"
-      criteria:
-      - condition: "$response.body#/0 == null"
+    - condition: "$response.body#/0/id != null"
     outputs:
       id: "$response.body#/0/id"
   - stepId: "getDashboardById"
@@ -65,11 +61,7 @@ workflows:
       value: "$steps.getDashboardById.outputs.category"
     successCriteria:
     - condition: "$statusCode == 200"
-    onSuccess:
-    - name: "HasAnalytics"
-      type: "end"
-      criteria:
-      - condition: "$response.body#/0 == null"
+    - condition: "$response.body#/0/category != null"
     outputs:
       category: "$response.body#/0/category"
   - stepId: "generateInsights"

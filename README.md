@@ -234,11 +234,14 @@ With a Specmatic Enterprise license, Studio provides a visual, browser-based int
 
 2. **Start the Specmatic Enterprise Studio container:**
    Ensure Docker is installed and running, then execute the following command from the `backend/` directory:
+   **Mac/Linux / Windows PowerShell**:
    ```bash
-   docker run --rm -it `
-     -p 9000:9000 `
-     -v ${PWD}:/usr/src/app `
-     specmatic/enterprise:latest studio
+   docker run --rm -it -p 9000:9000 -v ${PWD}:/usr/src/app specmatic/enterprise:1.20.1 studio
+   ```
+
+   **Windows CMD**:
+   ```cmd
+   docker run --rm -it -p 9000:9000 -v %cd%:/usr/src/app specmatic/enterprise:1.20.1 studio
    ```
 
 3. **Open Specmatic Studio** in your browser:
@@ -256,10 +259,16 @@ With a Specmatic Enterprise license, Studio provides a visual, browser-based int
 
 If you have a Specmatic Enterprise license, run the workflow directly from the CLI:
 
+**Mac/Linux / Windows PowerShell**:
 ```bash
 cd backend
-# Start the backend server first, then run:
-npx specmatic test workflow/DenaAnalyticsJourney.arazzo.yaml --host=localhost --port=3000
+# Start the backend server first, then run using the Enterprise Docker image:
+docker run --rm -it -v ${PWD}:/usr/src/app specmatic/enterprise:1.20.1 test workflow/DenaAnalyticsJourney.arazzo.yaml --host=host.docker.internal --port=3000
+```
+
+**Windows CMD**:
+```cmd
+docker run --rm -it -v %cd%:/usr/src/app specmatic/enterprise:1.20.1 test workflow/DenaAnalyticsJourney.arazzo.yaml --host=host.docker.internal --port=3000
 ```
 
 > [!NOTE]
