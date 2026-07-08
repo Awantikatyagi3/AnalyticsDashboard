@@ -81,7 +81,7 @@ jobs:
       # ─── Step 9: Run Specmatic Arazzo workflow tests ─────────────────────────
       - name: Run Arazzo workflow tests
         working-directory: backend
-        run: docker run --rm --network host -v ${{ github.workspace }}/backend:/usr/src/app specmatic/enterprise:1.20.1 test workflow/DenaAnalyticsJourney.arazzo.yaml --host=localhost --port=3000
+        run: docker run --rm --network host --add-host host.docker.internal:127.0.0.1 -v ${{ github.workspace }}/backend:/usr/src/app specmatic/enterprise:1.20.1 test workflow/DenaAnalyticsJourney.arazzo.yaml --host=localhost --port=3000
 
       # ─── Step 10: Upload test reports ────────────────────────────────────────
       - name: Upload Specmatic HTML test report
